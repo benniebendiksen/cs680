@@ -21,6 +21,7 @@
 	
 	<target name="init">
 		<mkdir dir="${bin}"/>
+		<mkdir dir="${test.bin}"/>
 	</target>
 	
 	<target name="compile" depends="init">

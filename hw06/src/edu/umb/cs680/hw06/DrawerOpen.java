@@ -8,6 +8,7 @@ public class DrawerOpen implements State{
 	public static DrawerOpen getInstance() {
 		if(instance==null) 
 			instance = new DrawerOpen();
+			System.out.printf("DrawerOpen Instance: ", instance);
 		return instance;
     }
 

@@ -13,8 +13,8 @@ public class DVDPlayer implements State{
 
 
     public static DVDPlayer getInstance() {
-    	
-        state = DrawerClosedNotPlaying.getInstance();
+    	if (state == null)
+    		state = DrawerClosedNotPlaying.getInstance();
         if (instance == null)
             instance = new DVDPlayer();
 

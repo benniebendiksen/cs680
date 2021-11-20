@@ -8,6 +8,7 @@ public class DrawerClosedNotPlaying implements State{
 	public static DrawerClosedNotPlaying getInstance() {
 		if(instance==null) 
 			instance = new DrawerClosedNotPlaying();
+			System.out.printf("DrawerClosedNotPlaying Instance: ", instance);
 		return instance;
     }
   
