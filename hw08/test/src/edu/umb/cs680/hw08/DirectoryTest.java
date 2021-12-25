@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 
 
 class DirectoryTest {
-    //first field references the lone FileSystem instance (e.g., static factory method use)
+    //first field references the lone FileSystem instance (e.g., Singleton method use)
     private static FileSystem fileSystem = FileSystem.getFileSystem();
     private static Directory root;
     private static Directory applications;
