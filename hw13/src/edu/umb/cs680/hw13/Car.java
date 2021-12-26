@@ -1,0 +1,89 @@
+package edu.umb.cs680.hw13;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Car {
+
+public LinkedList<Car> dominationList = new LinkedList<Car>();
+
+
+	private String make, model;
+	private int mileage, year;
+	private float price;
+	private int dominationCount = 0;
+	
+	protected Car(String make, String model, int mileage, int year, float price) {
+		this.make = make;
+		this.model = model;
+		this.mileage = mileage;
+		this.year = year;
+		this.price = price;
+		this.dominationCount = dominationCount;
+
+	}
+	
+	public void setDominationCount( ArrayList<Car> carList){
+		int priceCompareValue, yearCompareValue, mileageCompareValue;
+		Comparator<Car> PriceComparator = Comparator.comparing((Car c) -> c.getPrice());
+		Comparator<Car> YearComparator = Comparator.comparing((Car c) -> c.getYear(), Comparator.reverseOrder());
+		Comparator<Car> MileageComparator =  Comparator.comparing((Car c) -> c.getMileage());
+		
+
+		if (carList.size() > 1) {
+
+			for (int i = 0; i < carList.size(); i++) {
+				
+				yearCompareValue = YearComparator.compare(this, carList.get(i));
+				priceCompareValue = PriceComparator.compare(this, carList.get(i));	
+				mileageCompareValue = MileageComparator.compare(this, carList.get(i));	
+			
+				if((priceCompareValue >= 0 && mileageCompareValue >= 0 &&  yearCompareValue >= 0) && (priceCompareValue > 0 || mileageCompareValue > 0 || yearCompareValue > 0)) {
+					this.dominationCount++;
+				}
+			}
+		}
+	}
+
+	public String getMake() {
+		return this.make;
+	}
+	public void setDomCount(int dCount) {
+		this.dominationCount = dCount;
+	}
+	
+	public String getModel() {
+		return this.model;
+	}
+
+	public int getDomCount() {
+		return this.dominationCount;
+	}
+	
+	public int getMileage() {
+		return this.mileage;
+	}
+	
+	public int getYear() {
+		return this.year;
+	}
+	
+	public float getPrice() {
+		return this.price;
+	}
+		
+	
+	public int getDominationCount() {	
+		return this.dominationCount;
+	}
+	
+	
+    public static void main(String args[]) {
+		Car someCar = new Car("Dodge", "Journey", 90000, 2011, 10000);
+		System.out.printf("Your car is a: \"%s\"\n", someCar.getMake());
+	}
+    
+
+}
